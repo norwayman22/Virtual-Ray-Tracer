@@ -20,7 +20,7 @@ namespace _Project.UI.Scripts.Main_Menu
         private SettingsPanel settingsPanel;
         [SerializeField]
         private BadgesPanel badgesPanel;
-        
+
         private int lastScene;
         private int currentScene;
 
@@ -38,7 +38,7 @@ namespace _Project.UI.Scripts.Main_Menu
             levelsPanel.Hide();
             settingsPanel.Hide();
             badgesPanel.Hide();
-            
+
             UIManager uiManager = UIManager.Get();
             uiManager.RemoveEscapable(Hide);
             uiManager.DisableBlocker();
@@ -61,7 +61,7 @@ namespace _Project.UI.Scripts.Main_Menu
             badgesPanel.Hide();
             levelsPanel.Toggle();
         }
-        
+
         public void Exit()
         {
 #if UNITY_EDITOR
@@ -101,6 +101,6 @@ namespace _Project.UI.Scripts.Main_Menu
             lastScene = SceneManager.sceneCountInBuildSettings - 1;
             currentScene = SceneManager.GetActiveScene().buildIndex;
         }
-        
+
     }
 }

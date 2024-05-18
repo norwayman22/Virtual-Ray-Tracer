@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4390726549532894025}
   m_RootOrder: 1
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Info Dropdown
+  m_text: Ray Legend
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -161,6 +162,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4390726549532894025}
   - {fileID: 7981234557612642306}
@@ -214,6 +216,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8475707279966935854}
   m_Father: {fileID: 4390726549532894025}
@@ -252,6 +255,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6585176498867085637}
   m_RootOrder: 0
@@ -328,6 +332,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3373495415687728066}
   m_RootOrder: 1
@@ -335,7 +340,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -30}
-  m_SizeDelta: {x: 0, y: 2168.1}
+  m_SizeDelta: {x: 0, y: 254.66}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &6067793463419822330
 CanvasRenderer:
@@ -365,72 +370,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Vulputate sapien nec sagittis
-    aliquam malesuada bibendum arcu. Sollicitudin tempor id eu nisl nunc mi ipsum
-    faucibus vitae. Non pulvinar neque laoreet suspendisse interdum consectetur libero
-    id faucibus. Eu nisl nunc mi ipsum faucibus. Sit amet est placerat in. Pellentesque
-    dignissim enim sit amet venenatis urna cursus eget. Enim nulla aliquet porttitor
-    lacus. Cras sed felis eget velit aliquet sagittis id consectetur. Arcu cursus
-    vitae congue mauris rhoncus aenean vel. Nunc sed velit dignissim sodales ut eu
-    sem. Nunc mattis enim ut tellus elementum sagittis vitae et leo. Velit ut tortor
-    pretium viverra suspendisse potenti.
+  m_text: '<mark=#70FFFB>           </mark> Normal
 
+    <mark=#FFE600>          
+    </mark> Light
 
+    <mark=#656565>           </mark> Shadow
 
-    Condimentum lacinia quis vel eros
-    donec ac. Non arcu risus quis varius quam quisque id diam. At consectetur lorem
-    donec massa sapien faucibus et molestie ac. Nisl tincidunt eget nullam non nisi
-    est sit amet facilisis. Consectetur libero id faucibus nisl. Mauris vitae ultricies
-    leo integer malesuada nunc vel. Turpis tincidunt id aliquet risus feugiat in
-    ante metus. Risus sed vulputate odio ut enim blandit. Est ante in nibh mauris
-    cursus. Morbi tincidunt ornare massa eget egestas purus. Arcu odio ut sem nulla
-    pharetra diam sit amet. Vulputate sapien nec sagittis aliquam malesuada. Sit
-    amet commodo nulla facilisi nullam vehicula ipsum. Sagittis aliquam malesuada
-    bibendum arcu vitae elementum curabitur vitae nunc. Vitae sapien pellentesque
-    habitant morbi tristique senectus et netus et. Convallis aenean et tortor at
-    risus. Amet mauris commodo quis imperdiet massa tincidunt nunc. At imperdiet
-    dui accumsan sit amet nulla facilisi.
+    <mark=#008CFF>          
+    </mark> Reflect
 
+    <mark=#00FF32>           </mark> Refract
 
-
-    Tellus in metus vulputate eu scelerisque
-    felis. At in tellus integer feugiat scelerisque. Ullamcorper a lacus vestibulum
-    sed. Ligula ullamcorper malesuada proin libero. Elit ut aliquam purus sit amet
-    luctus venenatis lectus. Convallis convallis tellus id interdum velit laoreet.
-    Turpis tincidunt id aliquet risus feugiat in ante. Condimentum id venenatis a
-    condimentum vitae sapien pellentesque habitant morbi. Mattis nunc sed blandit
-    libero volutpat. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim
-    cras tincidunt lobortis. Tristique risus nec feugiat in fermentum posuere urna
-    nec. Vitae proin sagittis nisl rhoncus mattis rhoncus urna neque. Pellentesque
-    massa placerat duis ultricies lacus sed turpis.
-
-
-
-    Vitae proin sagittis nisl
-    rhoncus mattis rhoncus urna neque. Volutpat diam ut venenatis tellus in metus
-    vulputate. Posuere morbi leo urna molestie at elementum. Nullam vehicula ipsum
-    a arcu cursus vitae. Urna nunc id cursus metus aliquam eleifend mi in nulla.
-    Orci a scelerisque purus semper eget duis at tellus. Molestie ac feugiat sed
-    lectus. Ut etiam sit amet nisl purus in mollis nunc. Pretium quam vulputate dignissim
-    suspendisse in est ante in nibh. Sit amet volutpat consequat mauris nunc congue
-    nisi vitae. Aliquet nec ullamcorper sit amet risus nullam eget felis. Sapien
-    pellentesque habitant morbi tristique senectus. Metus vulputate eu scelerisque
-    felis imperdiet proin. Ut eu sem integer vitae. Elementum eu facilisis sed odio
-    morbi quis commodo. Interdum varius sit amet mattis vulputate. Nisl nisi scelerisque
-    eu ultrices vitae auctor eu augue ut.
-
-
-
-    Egestas sed sed risus pretium. Vitae
-    suscipit tellus mauris a. Elit at imperdiet dui accumsan sit amet. Ipsum a arcu
-    cursus vitae congue mauris. Pulvinar neque laoreet suspendisse interdum. Cursus
-    sit amet dictum sit amet justo. Eu lobortis elementum nibh tellus molestie nunc.
-    Ultrices sagittis orci a scelerisque. Integer enim neque volutpat ac tincidunt
-    vitae semper. Elementum curabitur vitae nunc sed velit dignissim sodales ut.
-    Tellus id interdum velit laoreet id donec ultrices tincidunt arcu. Cras fermentum
-    odio eu feugiat pretium. Et odio pellentesque diam volutpat commodo sed egestas
-    egestas fringilla. Sit amet nulla facilisi morbi tempus.'
+    <mark=#FF0000>          
+    </mark> No Hit'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -543,6 +496,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6585176498867085637}
   - {fileID: 5496815340918328095}
@@ -617,7 +571,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -639,6 +593,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1353380820773033508}
         m_TargetAssemblyTypeName: InfoDropdown, Assembly-CSharp
         m_MethodName: Toggle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

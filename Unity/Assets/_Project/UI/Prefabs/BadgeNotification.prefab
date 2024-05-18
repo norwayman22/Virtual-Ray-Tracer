@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5529106954375540616}
   m_RootOrder: 1
@@ -163,6 +164,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5529106954375540616}
   m_Father: {fileID: 0}
@@ -195,13 +197,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnNotification:
     m_PersistentCalls:
-      m_Calls: []
-  badgePrefab: {fileID: 5988128348047978439}
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  badgePrefab: {fileID: 0}
   animator: {fileID: 981998151248721584}
   showingNotification: 0
 --- !u!95 &981998151248721584
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -214,6 +228,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -246,8 +261,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8327416150132706104}
+  - {fileID: 1680309257455829015}
   - {fileID: 7416427729036164452}
   m_Father: {fileID: 2367281855917317828}
   m_RootOrder: 0
@@ -432,19 +448,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991c12ac1fa0bbe4a98f00d13ba6166f, type: 3}
---- !u!224 &8327416150132706104 stripped
+--- !u!224 &1680309257455829015 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6478034096987041700, guid: 991c12ac1fa0bbe4a98f00d13ba6166f, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4406733974457656459, guid: 991c12ac1fa0bbe4a98f00d13ba6166f, type: 3}
   m_PrefabInstance: {fileID: 3059762113699718300}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5988128348047978439 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8749489602627996507, guid: 991c12ac1fa0bbe4a98f00d13ba6166f, type: 3}
-  m_PrefabInstance: {fileID: 3059762113699718300}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0414a931c832a946b5c3931c050eea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

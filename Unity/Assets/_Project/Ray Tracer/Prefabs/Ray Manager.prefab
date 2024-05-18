@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,8 +70,8 @@ MonoBehaviour:
   colorRayMaterial: {fileID: 2100000, guid: 712d50a5f89dc3f18a1b505ec1bc611a, type: 2}
   colorRayMaterialTransparent: {fileID: 2100000, guid: 34027f5d3db6efc25931ab4e53a63e3f, type: 2}
   errorMaterial: {fileID: 2100000, guid: 2476b30221d1a2f4fb658070ee52c5b5, type: 2}
-  animate: 0
+  animate: 1
   animateSequentially: 0
-  loop: 0
+  loop: 1
   reset: 0
-  speed: 1
+  speed: 2
