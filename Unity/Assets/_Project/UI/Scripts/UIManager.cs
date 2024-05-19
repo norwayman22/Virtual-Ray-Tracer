@@ -8,9 +8,10 @@ using _Project.UI.Scripts.Render_Image_Window;
 using _Project.UI.Scripts.Toolbar;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 namespace _Project.UI.Scripts
-{ 
+{
     /// <summary>
     /// Manages the UI in a scene.
     /// </summary>
@@ -25,18 +26,22 @@ namespace _Project.UI.Scripts
 
         [SerializeField]
         private FPSCounter fpsCounter;
-        
+
         [SerializeField]
         private GameObject hidable;
-        
+
         [SerializeField]
         private HelpPanel helpPanel;
-        
+
         [SerializeField]
         private MainMenu mainMenu;
-        
+
         [SerializeField]
         private ControlPanel controlPanel;
+
+        [SerializeField]
+        private UICarousel uiCarousel;
+        private bool horizontalJoyMoved = false;
 
         [SerializeField]
         private RenderedImageWindow renderedImageWindow;
@@ -48,7 +53,7 @@ namespace _Project.UI.Scripts
             get { return renderedImageWindow; }
             private set { renderedImageWindow = value; }
         }
-        
+
         private static UIManager instance = null;
 
         private bool inOpeningScene;
@@ -64,7 +69,7 @@ namespace _Project.UI.Scripts
         {
             escapables.Remove(escapable);
         }
-        
+
         /// <summary>
         /// Get the current <see cref="UIManager"/> instance.
         /// </summary>
@@ -93,6 +98,29 @@ namespace _Project.UI.Scripts
                 blocker.gameObject.SetActive(false);
         }
 
+        void HandleJoystickMovement()
+        {
+            float horizontalJoyPos = Input.GetAxis("Horizontal");
+            bool horizontalJoyMoving = horizontalJoyPos != 0;
+
+            if (!horizontalJoyMoved && horizontalJoyMoving)
+            {
+                if (horizontalJoyPos < 0)
+                {
+                    uiCarousel.RotateLeft();
+                }
+                else
+                {
+                    uiCarousel.RotateRight();
+                }
+                horizontalJoyMoved = true;
+            }
+            else if (!horizontalJoyMoving)
+            {
+                horizontalJoyMoved = false;
+            }
+        }
+
         private void Awake()
         {
             instance = this;
@@ -101,9 +129,9 @@ namespace _Project.UI.Scripts
         private void Start()
         {
             fpsCounter.gameObject.SetActive(GlobalManager.Get().FPSEnabled);
-          
+
             inOpeningScene = SceneManager.GetActiveScene().buildIndex == 0;
-            
+
             if (inOpeningScene)
             {
                 controlPanel.gameObject.SetActive(true);
@@ -111,7 +139,7 @@ namespace _Project.UI.Scripts
                 hidable.gameObject.SetActive(false);
                 return;
             }
-            
+
             introductionPanel.Show();
         }
 
@@ -134,11 +162,12 @@ namespace _Project.UI.Scripts
                 if (Input.GetKeyDown(KeyCode.F2))
                     hidable.gameObject.SetActive(!hidable.gameObject.activeSelf);
             }
-            
+
             // All ui keys and keys shared between objects.
             if (Input.GetKeyDown(KeyCode.Escape) && areThereEscapables)
                 escapables.Last().Invoke();
-            
+
+            HandleJoystickMovement();
         }
     }
 }
