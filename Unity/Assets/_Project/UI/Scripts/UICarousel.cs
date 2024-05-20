@@ -43,16 +43,13 @@ namespace _Project.UI.Scripts
 		private void handleRotation()
 		{
 			if (rotateDirection == RotateDirection.None)
-			{
 				return;
-			}
+
 			double remainingRotation = 90.0f - currentRotation;
 			double rotateAmount = 90.0f / (animationRemainingSeconds / Time.deltaTime);
 
 			if (rotateAmount < remainingRotation)
-			{
 				currentRotation += rotateAmount;
-			}
 			else
 			{
 				rotateAmount = remainingRotation;

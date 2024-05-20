@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.XR.Interaction.Toolkit;
 
 namespace RuntimeHandle
 {
@@ -11,6 +12,9 @@ namespace RuntimeHandle
     public class RuntimeTransformHandle : MonoBehaviour
     {
         public static float MOUSE_SENSITIVITY = 1;
+
+        [SerializeField]
+        public XRRayInteractor xrRayInteractor;
 
         public HandleAxes axes = HandleAxes.XYZ;
         public HandleSpace space = HandleSpace.LOCAL;
@@ -27,7 +31,7 @@ namespace RuntimeHandle
 
         public float hideHandleAngle = 5.0f;
 
-        private Vector3 _previousMousePosition;
+        private Vector3 _previousControllerPosition;
         private HandleBase _previousAxis;
 
         private HandleBase _draggingHandle;
@@ -129,12 +133,21 @@ namespace RuntimeHandle
 
         private void GetHandle(ref HandleBase p_handle, ref Vector3 p_hitPoint)
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
+            // if (EventSystem.current.IsPointerOverGameObject())
+            //     return;
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (!Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Gizmos")))
+            // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            // RaycastHit hit;
+            // if (!Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Gizmos")))
+            //     return;
+
+            // p_handle = hit.collider.gameObject.GetComponentInParent<HandleBase>();
+            // if (p_handle == null) return;
+
+            // p_hitPoint = hit.point;
+
+            // --- --- ---
+            if (!xrRayInteractor.TryGetCurrent3DRaycastHit(out var hit))
                 return;
 
             p_handle = hit.collider.gameObject.GetComponentInParent<HandleBase>();
@@ -174,7 +187,7 @@ namespace RuntimeHandle
 
                 if (triggerValue && _draggingHandle != null)
                 {
-                    _draggingHandle.Interact(_previousMousePosition);
+                    _draggingHandle.Interact(_previousControllerPosition);
                 }
 
                 if ((triggerValue && !oldTriggerValue) && handle != null)
@@ -190,8 +203,7 @@ namespace RuntimeHandle
                 }
                 oldTriggerValue = triggerValue;
             }
-
-            _previousMousePosition = Input.mousePosition;
+            rightHandedController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.devicePosition, out _previousControllerPosition);
 
             transform.position = target.transform.position;
             if (space == HandleSpace.LOCAL || type == HandleType.SCALE)
