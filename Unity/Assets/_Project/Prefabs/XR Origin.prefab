@@ -1567,6 +1567,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -7.825
       objectReference: {fileID: 0}
+    - target: {fileID: 782367330480575751, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0011901855
+      objectReference: {fileID: 0}
+    - target: {fileID: 782367330480575751, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0006713867
+      objectReference: {fileID: 0}
     - target: {fileID: 796149165550152098, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1953,7 +1961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1977,7 +1985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.15
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2037,7 +2045,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1585692329333643413, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_Value
-      value: 0.99999636
+      value: 0.9999985
       objectReference: {fileID: 0}
     - target: {fileID: 1589844299561704637, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_Sprite
@@ -2081,6 +2089,10 @@ PrefabInstance:
         You can zoom
         the camera in and out by scrolling or by holding the right mouse button and
         left control and then dragging.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761399305120380479, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1901647048669602778, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2209,6 +2221,10 @@ PrefabInstance:
     - target: {fileID: 2082004018382697644, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_text
       value: Global
+      objectReference: {fileID: 0}
+    - target: {fileID: 2105789943799495218, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: animationDurationSeconds
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 2113743709529095180, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6223,6 +6239,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7397557914278031548, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397557914278031548, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397557914278031548, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7397557914278031548, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7429517401602328989, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_text
       value: Refraction
@@ -6314,6 +6346,10 @@ PrefabInstance:
     - target: {fileID: 7601139459046161664, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -7.825
+      objectReference: {fileID: 0}
+    - target: {fileID: 7634160148744396090, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 520
       objectReference: {fileID: 0}
     - target: {fileID: 7651931557561813356, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6751,11 +6787,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8506450230292569156, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.9999982
+      value: 0.9999993
       objectReference: {fileID: 0}
     - target: {fileID: 8506450230292569156, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.47972843
+      value: 0.47972947
       objectReference: {fileID: 0}
     - target: {fileID: 8549138460648802298, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMax.y

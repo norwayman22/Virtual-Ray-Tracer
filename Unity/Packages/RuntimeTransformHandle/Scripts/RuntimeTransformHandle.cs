@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +11,7 @@ namespace RuntimeHandle
     public class RuntimeTransformHandle : MonoBehaviour
     {
         public static float MOUSE_SENSITIVITY = 1;
-        
+
         public HandleAxes axes = HandleAxes.XYZ;
         public HandleSpace space = HandleSpace.LOCAL;
         public HandleType type = HandleType.POSITION;
@@ -28,7 +29,7 @@ namespace RuntimeHandle
 
         private Vector3 _previousMousePosition;
         private HandleBase _previousAxis;
-        
+
         private HandleBase _draggingHandle;
 
         private HandleType _previousType;
@@ -37,6 +38,10 @@ namespace RuntimeHandle
         private PositionHandle _positionHandle;
         private RotationHandle _rotationHandle;
         private ScaleHandle _scaleHandle;
+
+        private UnityEngine.XR.InputDevice rightHandedController;
+
+        private bool oldTriggerValue = false;
 
         public Transform target;
 
@@ -54,6 +59,11 @@ namespace RuntimeHandle
 
             if (autoScale)
                 AutoScaleHandle();
+
+            var rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
+            var deviceCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+            UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(deviceCharacteristics, rightHandedControllers);
+            rightHandedController = rightHandedControllers[0];
         }
 
         void CreateHandles()
@@ -80,12 +90,12 @@ namespace RuntimeHandle
         void Clear()
         {
             _draggingHandle = null;
-            
+
             if (_positionHandle) _positionHandle.Destroy();
             if (_rotationHandle) _rotationHandle.Destroy();
             if (_scaleHandle) _scaleHandle.Destroy();
         }
-        
+
         private void AutoScaleHandle()
         {
             // Project the handle position on to the screen and get a second screen point the desired distance from it.
@@ -121,15 +131,15 @@ namespace RuntimeHandle
         {
             if (EventSystem.current.IsPointerOverGameObject())
                 return;
-            
+
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (!Physics.Raycast(ray, out hit, Mathf.Infinity,LayerMask.GetMask("Gizmos"))) 
+            if (!Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Gizmos")))
                 return;
 
             p_handle = hit.collider.gameObject.GetComponentInParent<HandleBase>();
             if (p_handle == null) return;
-            
+
             p_hitPoint = hit.point;
         }
 
@@ -158,27 +168,33 @@ namespace RuntimeHandle
             GetHandle(ref handle, ref hitPoint);
             HandleOverEffect(handle);
 
-            if (Input.GetMouseButton(0) && _draggingHandle != null)
+            if (rightHandedController.isValid)
             {
-                _draggingHandle.Interact(_previousMousePosition);
-            }
+                rightHandedController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool triggerValue);
 
-            if (Input.GetMouseButtonDown(0) && handle != null)
-            {
-                _draggingHandle = handle;
-                _draggingHandle.StartInteraction(hitPoint);
-            }
+                if (triggerValue && _draggingHandle != null)
+                {
+                    _draggingHandle.Interact(_previousMousePosition);
+                }
 
-            if (Input.GetMouseButtonUp(0) && _draggingHandle != null)
-            {
-                _draggingHandle.EndInteraction();
-                _draggingHandle = null;
+                if ((triggerValue && !oldTriggerValue) && handle != null)
+                {
+                    _draggingHandle = handle;
+                    _draggingHandle.StartInteraction(hitPoint);
+                }
+
+                if ((!triggerValue && oldTriggerValue) && _draggingHandle != null)
+                {
+                    _draggingHandle.EndInteraction();
+                    _draggingHandle = null;
+                }
+                oldTriggerValue = triggerValue;
             }
 
             _previousMousePosition = Input.mousePosition;
 
             transform.position = target.transform.position;
-            if (space == HandleSpace.LOCAL || type == HandleType.SCALE) 
+            if (space == HandleSpace.LOCAL || type == HandleType.SCALE)
                 transform.rotation = target.transform.rotation;
             else
                 transform.rotation = Quaternion.identity;

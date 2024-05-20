@@ -18,15 +18,22 @@ namespace _Project.UI.Scripts
 		[SerializeField]
 		public double animationDurationSeconds;
 		private double animationRemainingSeconds;
-		private double animationRotatedDegrees = 0;
-		private RotateDirection rotateDirection = RotateDirection.None;
+		private double currentRotation;
+		private RotateDirection rotateDirection;
 
 		private RectTransform rectTransform;
+
+		private void resetRotationAnimation()
+		{
+			animationRemainingSeconds = animationDurationSeconds;
+			currentRotation = 0;
+			rotateDirection = RotateDirection.None;
+		}
 
 		private void Start()
 		{
 			rectTransform = this.GetComponent<RectTransform>();
-			animationRemainingSeconds = animationDurationSeconds;
+			resetRotationAnimation();
 		}
 
 		public void RotateLeft() => rotateDirection = RotateDirection.Left;
@@ -39,49 +46,19 @@ namespace _Project.UI.Scripts
 			{
 				return;
 			}
-			double frameDeltaTime = Time.deltaTime;
-			double remainingRotation = 90.0f - animationRotatedDegrees;
-			double rotateAmount = 90.0f / (animationRemainingSeconds / frameDeltaTime);
+			double remainingRotation = 90.0f - currentRotation;
+			double rotateAmount = 90.0f / (animationRemainingSeconds / Time.deltaTime);
 
-			if (rotateAmount >= remainingRotation)
+			if (rotateAmount < remainingRotation)
 			{
-				rectTransform.Rotate(0.0f, (float)(remainingRotation * (int)rotateDirection), 0.0f);
-
-				// Reset rotation animation
-				rotateDirection = RotateDirection.None;
-				animationRemainingSeconds = animationDurationSeconds;
-				animationRotatedDegrees = 0;
+				currentRotation += rotateAmount;
 			}
 			else
-			{
-				rectTransform.Rotate(0.0f, (float)(rotateAmount * (int)rotateDirection), 0.0f);
-				animationRotatedDegrees += rotateAmount;
-			}
-
-			// if (animationRemainingSeconds / frameDeltaTime <= 1)
-			// {
-			// 	rotateAmount /= (animationRemainingSeconds / frameDeltaTime);
-			// }
-
-			// rectTransform.Rotate(0.0f, rotateAmount * (int)rotateDirection, 0.0f);
-			// animationRemainingSeconds -= frameDeltaTime;
-			/*
-			if (rotateAmount >= remainingRotation)
 			{
 				rotateAmount = remainingRotation;
-
-				rotateDirection = RotateDirection.None;
-				animationRemainingSeconds = animationDurationSeconds;
-				animationRotatedDegrees = 0;
+				resetRotationAnimation();
 			}
-			else
-			{
-				animationRotatedDegrees += rotateAmount;
-			}
-			rectTransform.Rotate(0.0f, rotateAmount * (int)rotateDirection, 0.0f);
-			*/
-			// Vector3 rotateAmount = new Vector3(0.0f, 90.0f * (int)direction, 0.0f);
-			// rectTransform.Rotate(rotateAmount);
+			rectTransform.Rotate(0.0f, (float)(rotateAmount * (int)rotateDirection), 0.0f);
 		}
 
 		void Update() => handleRotation();
