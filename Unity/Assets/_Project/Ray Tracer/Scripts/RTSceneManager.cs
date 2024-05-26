@@ -8,8 +8,6 @@ using _Project.Ray_Tracer.Scripts.RT_Scene.RT_Camera;
 using _Project.Ray_Tracer.Scripts.Utility;
 using _Project.UI.Scripts;
 using _Project.UI.Scripts.Control_Panel;
-using RuntimeHandle;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -53,15 +51,6 @@ namespace _Project.Ray_Tracer.Scripts
         [Header("UI")]
         [SerializeField] private Color SelectionColor;
         [SerializeField] private ControlPanel ControlPanel;
-        [SerializeField] private TMP_Dropdown HandleTypeDropdown;
-        [SerializeField] private TMP_Dropdown HandleSpaceDropdown;
-
-        [Header("Gizmos")]
-        [SerializeField] private RuntimeTransformHandle transformHandle;
-
-        [SerializeField] private float translationSnap = 0.0f;
-        [SerializeField] private float rotationSnap = 0.0f;
-        [SerializeField] private float scaleSnap = 0.0f;
 
         [Header("Objects")]
         [SerializeField] private bool deleteAllowed = false;
@@ -73,13 +62,11 @@ namespace _Project.Ray_Tracer.Scripts
 
         [Serializable]
         public class Event : UnityEvent { };
-        public Event OnTranslationMode, OnRotationMode, OnScaleMode, OnLocalSpace, OnGlobalSpace, OnDeselect, OnObjectDeleted;
+        public Event OnDeselect, OnObjectDeleted;
 
         private static RTSceneManager instance = null;
         private Selection selection = new Selection();
         private Transform previousTransform;
-
-        private HandleSpace handleSpace = HandleSpace.WORLD;
 
         /// <summary>
         /// The object type. 
@@ -264,10 +251,6 @@ namespace _Project.Ray_Tracer.Scripts
                 previousTransform = newSelection;
                 selection.Mesh.OnMeshSelected?.Invoke();
             }
-
-            transformHandle.target = selection.Transform;
-            SetHandleType(transformHandle.type);
-            transformHandle.gameObject.SetActive(true);
             UIManager.Get().AddEscapable(DeselectAndInvoke);
         }
 
@@ -296,7 +279,6 @@ namespace _Project.Ray_Tracer.Scripts
 
             selection = new Selection();
 
-            transformHandle.gameObject.SetActive(false);
             UIManager.Get().RemoveEscapable(DeselectAndInvoke);
         }
 
@@ -457,60 +439,6 @@ namespace _Project.Ray_Tracer.Scripts
             return result;
         }
 
-        private void SetHandleType(HandleType type)
-        {
-            // Cameras should not be scaled and lights should not be scaled or rotated. We default to translation.
-            bool selectedCamera = selection.Type == typeof(RTCamera);
-            bool selectedPointLight = selection.Type == typeof(RTPointLight);
-            bool selectedSpotLight = selection.Type == typeof(RTSpotLight);
-            bool selectedAreaLight = selection.Type == typeof(RTAreaLight);
-            if (type == HandleType.ROTATION && selectedPointLight)
-                type = HandleType.POSITION;
-            if (type == HandleType.SCALE && (selectedCamera || selectedPointLight || selectedSpotLight))
-                type = HandleType.POSITION;
-
-            // Update the dropdown text if necessary. Changing triggers a callback.
-            if (HandleTypeDropdown.value != (int)type)
-                HandleTypeDropdown.value = (int)type;
-
-            // Scaling only happens in local space, so selecting the space makes no sense when scaling.
-            if (type == HandleType.SCALE)
-                HandleSpaceDropdown.interactable = false;
-            else
-                HandleSpaceDropdown.interactable = true;
-
-            // Invoke transformation type changed listeners
-            if (type == HandleType.POSITION)
-                OnTranslationMode?.Invoke();
-            else if (type == HandleType.ROTATION)
-                OnRotationMode?.Invoke();
-            else
-                OnScaleMode?.Invoke();
-
-            // Spotlight may not rotate in z; Arealight may not scale in z
-            if ((selectedSpotLight && type == HandleType.ROTATION) ||
-                (selectedAreaLight && type == HandleType.SCALE))
-                transformHandle.axes = HandleAxes.XY;
-            else
-                transformHandle.axes = HandleAxes.XYZ;   // reset in case it's set to XY
-
-            transformHandle.type = type;
-        }
-
-        private void SetHandleSpace(HandleSpace space)
-        {
-            handleSpace = space;
-            transformHandle.space = space;
-
-            if (space == HandleSpace.LOCAL)
-                OnLocalSpace?.Invoke();
-            else
-                OnGlobalSpace?.Invoke();
-
-            if (HandleSpaceDropdown.value != (int)space)
-                HandleSpaceDropdown.value = (int)space;
-        }
-
         private void OnEvent(ControlPanel.SignalType signal)
         {
             switch (signal)
@@ -553,11 +481,6 @@ namespace _Project.Ray_Tracer.Scripts
             instance = this;
             Image = new RTImage(1, 1);
 
-            transformHandle.gameObject.SetActive(false);
-
-            HandleTypeDropdown.onValueChanged.AddListener(type => SetHandleType((HandleType)type));
-            HandleSpaceDropdown.onValueChanged.AddListener(space => SetHandleSpace((HandleSpace)space));
-
             // Find the first camera and all lights and meshes in the Unity scene.
             RTCamera camera = FindObjectOfType<RTCamera>();
             List<RTPointLight> pointLights = new List<RTPointLight>(FindObjectsOfType<RTPointLight>());
@@ -575,14 +498,11 @@ namespace _Project.Ray_Tracer.Scripts
         }
 
 
-        // Check whether we are clicking on a transformation handle.
+        // Check whether we are clicking on a an object or nothing. GOTTA REWRITE FOR XR DESELECT
         private void OnLeftClick()
         {
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            // If we hit a handle we do nothing
-            if (Physics.Raycast(ray, Mathf.Infinity, LayerMask.GetMask("Gizmos"))) return;
 
             // If we don't hit a handle we try to select the first object we did hit.
             int mask = LayerMask.GetMask("Ray Tracer Objects", "Camera and Lights");
@@ -602,37 +522,6 @@ namespace _Project.Ray_Tracer.Scripts
             bool inUI = EventSystem.current.IsPointerOverGameObject();
             if (Input.GetMouseButtonDown(0) && !inUI)
                 OnLeftClick();
-
-            // Handle transformation type hot keys.
-            if (Input.GetKeyDown(KeyCode.T))
-                SetHandleType(HandleType.POSITION);
-            if (Input.GetKeyDown(KeyCode.R))
-                SetHandleType(HandleType.ROTATION);
-            if (Input.GetKeyDown(KeyCode.S))
-                SetHandleType(HandleType.SCALE);
-
-            // Handle space hot keys.
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                if (handleSpace == HandleSpace.WORLD)
-                    SetHandleSpace(HandleSpace.LOCAL);
-                else
-                    SetHandleSpace(HandleSpace.WORLD);
-            }
-
-            // Handle snapping hot keys.
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                transformHandle.positionSnap = new Vector3(translationSnap, translationSnap, translationSnap);
-                transformHandle.rotationSnap = rotationSnap;
-                transformHandle.scaleSnap = new Vector3(scaleSnap, scaleSnap, scaleSnap);
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                transformHandle.positionSnap = new Vector3(0.0f, 0.0f, 0.0f);
-                transformHandle.rotationSnap = 0.0f;
-                transformHandle.scaleSnap = new Vector3(0.0f, 0.0f, 0.0f);
-            }
 
             // Delete object key.
             if (Input.GetKeyDown(KeyCode.Delete))
