@@ -8,7 +8,6 @@ using _Project.UI.Scripts.Render_Image_Window;
 using _Project.UI.Scripts.Toolbar;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;
 
 namespace _Project.UI.Scripts
 {
@@ -38,10 +37,6 @@ namespace _Project.UI.Scripts
 
         [SerializeField]
         private ControlPanel controlPanel;
-
-        [SerializeField]
-        private UICarousel uiCarousel;
-        private bool horizontalJoyMoved = false;
 
         [SerializeField]
         private RenderedImageWindow renderedImageWindow;
@@ -98,29 +93,6 @@ namespace _Project.UI.Scripts
                 blocker.gameObject.SetActive(false);
         }
 
-        void HandleJoystickMovement()
-        {
-            float horizontalJoyPos = Input.GetAxis("Horizontal");
-            bool horizontalJoyMoving = horizontalJoyPos != 0;
-
-            if (!horizontalJoyMoved && horizontalJoyMoving)
-            {
-                if (horizontalJoyPos < 0)
-                {
-                    uiCarousel.RotateLeft();
-                }
-                else
-                {
-                    uiCarousel.RotateRight();
-                }
-                horizontalJoyMoved = true;
-            }
-            else if (!horizontalJoyMoving)
-            {
-                horizontalJoyMoved = false;
-            }
-        }
-
         private void Awake()
         {
             instance = this;
@@ -166,8 +138,6 @@ namespace _Project.UI.Scripts
             // All ui keys and keys shared between objects.
             if (Input.GetKeyDown(KeyCode.Escape) && areThereEscapables)
                 escapables.Last().Invoke();
-
-            HandleJoystickMovement();
         }
     }
 }
