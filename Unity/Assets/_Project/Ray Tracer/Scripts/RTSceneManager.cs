@@ -497,35 +497,9 @@ namespace _Project.Ray_Tracer.Scripts
             ControlPanel.Subscribe(OnEvent);
         }
 
-
-        // Check whether we are clicking on a an object or nothing. GOTTA REWRITE FOR XR DESELECT
-        private void OnLeftClick()
-        {
-
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            // If we don't hit a handle we try to select the first object we did hit.
-            int mask = LayerMask.GetMask("Ray Tracer Objects", "Camera and Lights");
-            if (Physics.Raycast(ray, out var hit, Mathf.Infinity, mask))
-            {
-                Select(hit.transform);
-                return;
-            }
-
-            // If nothing was hit deselect all.
-            DeselectAndInvoke();
-        }
-
         private void Update()
         {
-            // Check if we clicked on anything (unless we are hovered over or in UI, or orbiting the camera).
-            bool inUI = EventSystem.current.IsPointerOverGameObject();
-            if (Input.GetMouseButtonDown(0) && !inUI)
-                OnLeftClick();
 
-            // Delete object key.
-            if (Input.GetKeyDown(KeyCode.Delete))
-                DeleteSelected();
         }
     }
 }

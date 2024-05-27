@@ -81,13 +81,13 @@ namespace _Project.Scripts
             {
                 mainCanvas.SetParent(leftController);
                 leftUIActivated = true;
-                move.SetActive(false);
+                //move.SetActive(false);
             }
             else if (rightActive)
             {
                 mainCanvas.SetParent(rightController);
                 rightUIActivated = true;
-                turn.SetActive(false);
+                //turn.SetActive(false);
             }
             mainCanvas.SetLocalPositionAndRotation(canvasDefaultPosition, canvasDefaultRotation);
             mainCanvas.gameObject.SetActive(true);
@@ -107,8 +107,8 @@ namespace _Project.Scripts
                 rightUIActivated = false;
                 mainCanvas.gameObject.SetActive(false);
 
-                turn.SetActive(true);
-                move.SetActive(true);
+                //turn.SetActive(true);
+                //move.SetActive(true);
             }
         }
 

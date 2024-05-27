@@ -182,8 +182,8 @@ namespace _Project.Ray_Tracer.Scripts
                 IsTransparent = mesh.Type == RTMesh.ObjectType.Transparent;
 
                 // Interpolate the hit normal to achieve smooth shading.
-                if (mesh.ShadeSmooth)
-                    Normal = SmoothedNormal(ref hit);
+                // if (mesh.ShadeSmooth)
+                //     Normal = SmoothedNormal(ref hit);
 
                 // The shading normal always points in the direction of the view, as required by the Phong illumination
                 // model.
@@ -246,7 +246,7 @@ namespace _Project.Ray_Tracer.Scripts
         public List<TreeNode<RTRay>> Render()
         {
             AccelerationPrep();
-            
+
             List<TreeNode<RTRay>> rayTrees = new List<TreeNode<RTRay>>();
             scene = rtSceneManager.Scene;
             camera = scene.Camera;
@@ -269,7 +269,7 @@ namespace _Project.Ray_Tracer.Scripts
                 for (int x = 0; x < width; ++x)
                 {
                     Color color = Color.black;
-                    
+
                     // Set a base Ray with a zero-distance as the main ray of the pixel
                     float centerPixelX = -halfScreenWidth + pixelWidth * (x + 0.5f);
                     float centerPixelY = -halfScreenHeight + pixelHeight * (y + 0.5f);
@@ -461,7 +461,7 @@ namespace _Project.Ray_Tracer.Scripts
         public IEnumerator RenderImage()
         {
             AccelerationPrep();
-            
+
             RenderedImageWindow renderedImageWindow = UIManager.Get().RenderedImageWindow;
             scene = rtSceneManager.Scene;
             camera = scene.Camera;
@@ -474,9 +474,9 @@ namespace _Project.Ray_Tracer.Scripts
             int scaleFactor = Mathf.RoundToInt(Mathf.Sqrt(160000f / (width * height)));
             width = scaleFactor * width;
             height = scaleFactor * height;
-            
+
             image = new Texture2D(width, height, TextureFormat.RGBA32, false);
-            
+
             // Calculate the other variables.
             float halfScreenHeight = camera.ScreenDistance * Mathf.Tan(Mathf.Deg2Rad * camera.FieldOfView / 2.0f);
             float halfScreenWidth = aspectRatio * halfScreenHeight;
@@ -494,7 +494,7 @@ namespace _Project.Ray_Tracer.Scripts
                 for (int x = 0; x < width; ++x)
                 {
                     Color color = Color.black;
-                    
+
                     for (int supY = 0; supY < SuperSamplingFactor; supY++)
                     {
                         float difY = pixelHeight * (y + step * (0.5f + supY));
@@ -526,14 +526,14 @@ namespace _Project.Ray_Tracer.Scripts
                     yield return null; // yield to update UI and give the ability to cancel
                 }
             }
-            
+
             Debug.Log("Triangle tests: " + trianglesTests);
             Debug.Log(Time.realtimeSinceStartup - start);
-            
+
             AccelerationCleanupImage();
 
             image.Apply(); // Very important.
-            
+
             yield return null;
         }
 
@@ -596,7 +596,7 @@ namespace _Project.Ray_Tracer.Scripts
 
             // Lastly add ambient so it doesn't get attenuated
             color += light.Ambient * light.Color * hitInfo.Color;
-        
+
             return ClampColor(color);
         }
 
