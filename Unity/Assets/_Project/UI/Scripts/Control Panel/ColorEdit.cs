@@ -27,10 +27,10 @@ namespace _Project.UI.Scripts.Control_Panel
 
         [SerializeField]
         private TextMeshProUGUI title;
-        
+
         [SerializeField]
         Button colorButton;
-        
+
         [SerializeField]
         ColorPicker colorPicker;
 
@@ -95,7 +95,7 @@ namespace _Project.UI.Scripts.Control_Panel
 
         public void ToggleColorPicker()
         {
-            if(!colorPicker.gameObject.activeSelf) OpenColorPicker();
+            if (!colorPicker.gameObject.activeSelf) OpenColorPicker();
             else CloseColorPicker();
         }
         private void OpenColorPicker()
@@ -114,7 +114,7 @@ namespace _Project.UI.Scripts.Control_Panel
         private void Awake()
         {
             CloseColorPicker();
-            
+
             // Update interactability based on serialized value in inspector.
             Interactable = interactable;
         }
@@ -123,7 +123,7 @@ namespace _Project.UI.Scripts.Control_Panel
         {
             CloseColorPicker();
         }
-        
+
 
         private void Update()
         {

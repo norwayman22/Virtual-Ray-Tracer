@@ -110,7 +110,7 @@ namespace _Project.UI.Scripts.Tutorial
             // The first level can always be loaded
             if (level <= 1)
                 return true;
-            
+
             GlobalManager globalManager = GlobalManager.Get();
 
             if (globalManager.CheatMode) return true;
@@ -210,7 +210,7 @@ namespace _Project.UI.Scripts.Tutorial
         public void UpdateTutorial()
         {
             // Set the fill width/percentage
-            progressFill.GetComponent<RectTransform>().sizeDelta = new Vector2(progressBar.GetComponent<RectTransform>().rect.width * 
+            progressFill.GetComponent<RectTransform>().sizeDelta = new Vector2(progressBar.GetComponent<RectTransform>().rect.width *
                 currentTasks.GetCompletedPercentage(), 0);
 
             // Set the task progression text
@@ -245,7 +245,7 @@ namespace _Project.UI.Scripts.Tutorial
         {
             originalSize = contents.GetComponent<RectTransform>().sizeDelta;
             expandCollapseButton.onClick.AddListener(ExpandCollapse);
-            
+
             int level = SceneManager.GetActiveScene().buildIndex - 1;
             if (level < 0 || level >= GlobalManager.Get().TutorialTasks.Count) currentTasks = new Tasks();
             else currentTasks = GlobalManager.Get().TutorialTasks[level];

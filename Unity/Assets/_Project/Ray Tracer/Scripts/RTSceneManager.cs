@@ -213,13 +213,7 @@ namespace _Project.Ray_Tracer.Scripts
 
             // Do nothing if what we selected is already the selected object.
             if (selection.Transform == newSelection)
-            {
-                selection.Mesh?.OnMeshSelected?.Invoke();
-                selection.Camera?.OnCameraSelected?.Invoke();
-                selection.Light?.OnLightSelected?.Invoke();
-
                 return;
-            }
 
             // Do nothing if we selected something other than a camera, light or mesh.
             Selection candidate = DetermineSelection(newSelection);
@@ -234,14 +228,12 @@ namespace _Project.Ray_Tracer.Scripts
             {
                 ControlPanel.ShowCameraProperties(selection.Camera);
                 selection.Camera.Color = SelectionColor;
-                selection.Camera.OnCameraSelected?.Invoke();
             }
             else if (selection.Type.BaseType == typeof(RTLight))
             {
                 ControlPanel.ShowLightProperties(selection.Light);
                 selection.Light.Higlight(SelectionColor);
                 previousTransform = newSelection;
-                selection.Light.OnLightSelected?.Invoke();
             }
             else if (selection.Type == typeof(RTMesh))
             {
@@ -249,7 +241,6 @@ namespace _Project.Ray_Tracer.Scripts
                 selection.Mesh.Outline.OutlineColor = SelectionColor;
                 selection.Mesh.Outline.enabled = true;
                 previousTransform = newSelection;
-                selection.Mesh.OnMeshSelected?.Invoke();
             }
             UIManager.Get().AddEscapable(DeselectAndInvoke);
         }

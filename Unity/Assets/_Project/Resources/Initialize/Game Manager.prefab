@@ -47,7 +47,7 @@ MonoBehaviour:
   FPSEnabled: 0
   CheatMode: 0
   TutorialTasks:
-  - optionalTasksStart: 17
+  - optionalTasksStart: 3
     tasks:
     - identifier: 
       name: Introduction
@@ -74,118 +74,55 @@ MonoBehaviour:
       description: We'll first start by going over the controls and the various interface
         elements. If you get lost somewhere, you can always go back to previous task(s)
         or find all the necessary information in the help menu. Access this menu
-        any time by clicking the "Help" button in the top left or by pressing [F1].
+        any time by clicking the "Help" button above.
       skippable: 0
       points: 153
-    - identifier: mainMenu
-      name: Main Menu
-      description: In the main menu you have options to go back to home screen, switch
-        between levels (once they have been unlocked), see your earned badges, change
-        settings, and exit the program. Access the main menu by clicking the "Main
-        Menu" button in the top left or by pressing [ESC].
-      skippable: 0
-      points: 141
-    - identifier: cameraPan
-      name: Camera Panning
-      description: Pan the camera by moving your mouse while holding down the middle
-        mouse button or by using the arrow keys.
-      skippable: 0
-      points: 162
-    - identifier: cameraOrbit
-      name: Camera Orbiting
-      description: 'Orbit the camera by moving your mouse while holding down left-click
-        and left control or by using the arrow keys while holding down left control.
-        (For Mac users: use left command)'
-      skippable: 0
-      points: 169
-    - identifier: cameraZoom
-      name: Camera Zooming
-      description: Zoom the camera in and out by scrolling your mousewheel.
-      skippable: 0
-      points: 126
-    - identifier: objectSelect
-      name: Object Selection
-      description: You can select the camera, lights and objects in the scene by
-        left-clicking on them. Select the ground, wall or sphere in this scene.
-      skippable: 0
-      points: 121
-    - identifier: hoverColor
-      name: Property Information
-      description: The object's properties are now shown on the right. Hover over
-        the "Color" text to see more information.
-      skippable: 0
-      points: 138
-    - identifier: editColor
-      name: Edit Properties
-      description: Change the color of an object in the properties panel.
-      skippable: 0
-      points: 107
-    - identifier: objectTranslation
-      name: Translation
-      description: Move an object by moving your mouse while holding down left-click
-        on one of the three gizmos (the arrows coming from the object). Notice how
-        the position values change while moving the object.
-      skippable: 0
-      points: 155
-    - identifier: transformationEdit
-      name: Transformation Mode
-      description: The transformation mode can be changed using the dropdown in the
-        top left or by pressing [T]ranslate, [S]cale and [R]otate. Change the current
-        transformation mode to Scale.
-      skippable: 0
-      points: 99
-    - identifier: objectScaling
-      name: Scaling
-      description: 'Now scale an object using the gizmos. Notice how the scale values
-        change while scaling the object. '
-      skippable: 0
-      points: 98
-    - identifier: objectRotation
-      name: Rotation
-      description: 'Change the current transformation mode to "rotate" and rotate
-        an object using the gizmos. Notice how the rotation values change while rotating
-        the object. '
-      skippable: 0
-      points: 77
-    - identifier: deselect
-      name: Deselection
-      description: Deselect an object by left-clicking on an empty part of the scene
-        or by pressing [ESC].
-      skippable: 0
-      points: 58
-    - identifier: notDisabledEdit
-      name: Ray Tracer Properties
-      description: 'When nothing is selected, the general ray tracer properties are
-        shown. Almost all options are disabled right now to keep things simple. Click
-        on an option that is not disabled (HINT: it''s a button).'
-      skippable: 0
-      points: 51
-    - identifier: 
-      name: 
-      description: 
+    - identifier: controllers
+      name: Controllers
+      description: Look at the controllers in your hands. If you ever need to look
+        for a button (or a joystick), their placements should be roughly the same
+        here compared to the ones in your actual hands. The joystick, grab button
+        (your middle finger) and trigger (your index finger) are animated to reflect
+        your actions.
       skippable: 1
       points: 0
-    - identifier: cameraSelection
-      name: Camera
-      description: Select the camera.
+    - identifier: turn
+      name: Turning
+      description: Turning can be done by moving your head around, but when that
+        is not enough, you will want to use the joystick on the right controller
+        to turn left or right (and to continue in this tutorial). Try it out.
       skippable: 0
-      points: 187
-    - identifier: localSpace
-      name: Global vs Local Space
-      description: Switch to "Local" space by changing the dropdown in the top left.
+      points: 169
+    - identifier: move
+      name: Moving
+      description: Move around by moving the joystick on your left controller. Moving
+        forwards will always move towards the direction you are facing. Once you
+        get the hang of turning and moving, moving up or down should be doable.
       skippable: 0
-      points: 241
-    - identifier: cameraTranslation
-      name: Global vs Local Space
-      description: Switch to "Translate" transformation mode and move the camera
-        around. Notice how local space differs from global space.
+      points: 162
+    - identifier: objectSelect
+      name: Grabbing Objects
+      description: You can grab the camera, lights and objects in the scene by aiming
+        either of your controller's laser at them and pressing the grab button on
+        that controller (with your middle finger). When holding an object, you can
+        move it around just like in real life. Grab the ground, wall or sphere in
+        this scene to continue.
       skippable: 0
-      points: 144
-    - identifier: 
-      name: 
-      description: 
+      points: 121
+    - identifier: objectDoubleGrab
+      name: Grabbing With Both Controllers
+      description: When you are holding an object, you can grab it with the other
+        controller to be able to rotate and scale it. Try to make it so the back
+        wall is smaller and the top of it is leaning a little towards you. If you're
+        having a hard time, try to think about where to grab it to get the most control.
       skippable: 0
-      points: 0
+      points: 150
+    - identifier: editColor
+      name: Edit Properties
+      description: Whenever you grab an object, its properties are shown in the properties
+        panel on the left. Change the color of an object in the properties panel.
+      skippable: 0
+      points: 138
   - optionalTasksStart: 12
     tasks:
     - identifier: 

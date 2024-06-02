@@ -1139,10 +1139,12 @@ MonoBehaviour:
   leftController: {fileID: 5215453954486858077}
   rightController: {fileID: 5215453954897981884}
   mainCanvas: {fileID: 3967432187388127839}
+  hideableCanvases:
+  - {fileID: 2377837048420020951}
+  - {fileID: 5925520650149991071}
+  - {fileID: 2471319681621991507}
   leftActivateReference: {fileID: -5982496924579745919, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightActivateReference: {fileID: 83097790271614945, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  turn: {fileID: 6631120206397957677}
-  move: {fileID: 5237299413516492481}
 --- !u!1 &7788163575302283811
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,10 +2560,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 110
       objectReference: {fileID: 0}
-    - target: {fileID: 870742345764632466, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -85
-      objectReference: {fileID: 0}
     - target: {fileID: 879789051984980091, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3120,7 +3118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.22
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3144,7 +3142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.22
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13777,41 +13775,13 @@ PrefabInstance:
       value: Object Selection
       objectReference: {fileID: 0}
     - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: hidable
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: mainMenu
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: helpPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: fpsCounter
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: uiCarousel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: controlPanel
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: carouselCanvas
       value: 
       objectReference: {fileID: 2441297105423925138, guid: 6ebc1557193eb334186bd2571f401ebf, type: 3}
-    - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: introductionPanel
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8913031418967251714, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
-      propertyPath: renderedImageWindow
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8964589402586107580, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -14506,9 +14476,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+--- !u!1 &2377837048420020951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152957198363818026, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+  m_PrefabInstance: {fileID: 2513202039790947069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2471319681621991507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 48215614971734702, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+  m_PrefabInstance: {fileID: 2513202039790947069}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3967432187388127839 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1580633165691527330, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
+  m_PrefabInstance: {fileID: 2513202039790947069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5925520650149991071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8132096105436960866, guid: a089bc9ca78ddeb4da910798b65a4418, type: 3}
   m_PrefabInstance: {fileID: 2513202039790947069}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3374827168149248707
