@@ -1637,6 +1637,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2206087548955375469}
     m_Modifications:
+    - target: {fileID: 1827953592348767468, guid: b06e4dc51dbf0384890449809f05c483, type: 3}
+      propertyPath: m_text
+      value: You need to render an image first.
+      objectReference: {fileID: 0}
     - target: {fileID: 1827953592348767469, guid: b06e4dc51dbf0384890449809f05c483, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
