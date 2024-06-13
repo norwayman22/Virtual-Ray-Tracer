@@ -1095,7 +1095,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exitButton: {fileID: 1149386016225261020}
-  fullScreenToggle: {fileID: 0}
   fpsCounterToggle: {fileID: 1149386015114325800}
   cheatModeToggle: {fileID: 1149386015934283949}
   fpsCounter: {fileID: 0}

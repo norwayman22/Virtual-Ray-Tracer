@@ -370,20 +370,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '<mark=#70FFFB>           </mark> Normal
-
-    <mark=#FFE600>          
-    </mark> Light
-
-    <mark=#656565>           </mark> Shadow
-
-    <mark=#008CFF>          
-    </mark> Reflect
-
-    <mark=#00FF32>           </mark> Refract
-
-    <mark=#FF0000>          
-    </mark> No Hit'
+  m_text: Because ray tracing is based on how light behaves in the real world, we
+    can relatively easily implement more advanced features such as reflections. Whenever
+    we encounter a reflective surface, all we have to do is to cast a ray in the
+    reflected direction. This reflection ray then behaves just like a ray cast from
+    the camera, and therefore it will produce a color. This color can be mixed into
+    the original ray's color with an intensity depending on the reflectivity (also
+    called specularity) of the surface. This results in very convincing reflections
+    without making the ray tracer much more complicated. However, casting more rays
+    will of course make rendering take longer.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
