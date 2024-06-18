@@ -10,6 +10,9 @@ namespace _Project.Scripts
 {
     public class XRUIControlManager : MonoBehaviour
     {
+        [SerializeField]
+        RectTransform mainCanvas;
+
         [Space]
         [Header("Controllers")]
 
@@ -19,17 +22,6 @@ namespace _Project.Scripts
         Transform rightController;
 
         [Space]
-        [Header("Canvases")]
-
-        [SerializeField]
-        RectTransform mainCanvas;
-
-        [SerializeField]
-        List<GameObject> hideableCanvases;
-
-        [Space]
-        [Header("Controller Activate References")]
-
         [SerializeField]
         InputActionReference leftActivateReference;
         [SerializeField]
@@ -63,13 +55,12 @@ namespace _Project.Scripts
 
         void ToggleUI()
         {
-            foreach (GameObject canvas in hideableCanvases)
-            {
-                bool toggle = !canvas.GetComponent<Canvas>().enabled;
-                canvas.GetComponent<Canvas>().enabled = toggle;
-                canvas.GetComponent<GraphicRaycaster>().enabled = toggle;
-                canvas.GetComponent<TrackedDeviceGraphicRaycaster>().enabled = toggle;
-            }
+            CanvasGroup canvasGroup = mainCanvas.gameObject.GetComponent<CanvasGroup>();
+            bool toggle = canvasGroup.alpha == 0;
+
+            canvasGroup.interactable = toggle;
+            canvasGroup.blocksRaycasts = toggle;
+            canvasGroup.alpha = toggle ? 1 : 0;
         }
 
         void onStartActivation(InputAction.CallbackContext context)

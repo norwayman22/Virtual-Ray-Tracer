@@ -80,7 +80,7 @@ namespace _Project.UI.Scripts
         public void EnableBlocker()
         {
             blockerCount++;
-            blocker.gameObject.SetActive(true);
+            //blocker.gameObject.SetActive(true);
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace _Project.UI.Scripts
         public void DisableBlocker()
         {
             // Only disable the blocker if all sources that enabled it also disabled it again.
-            if (--blockerCount == 0)
-                blocker.gameObject.SetActive(false);
+            // if (--blockerCount == 0)
+            //     blocker.gameObject.SetActive(false);
         }
 
         private void Awake()
