@@ -42,8 +42,7 @@ namespace _Project.Scripts
                 Transform RTCamTransform = RTSceneManager.Get().Scene.Camera.transform;
                 float positionDifference = (player.position - (8.6f * RTCamOffset) - RTCamTransform.position).magnitude;
                 float rotationSimilarity = playerCamera.eulerAngles.y - RTCamTransform.eulerAngles.y;
-                // Debug.Log($"pos dif: {positionDifference}");
-                // Debug.Log($"rot sim: {rotationSimilarity}");
+
                 if (positionDifference < 0.075f && rotationSimilarity < 0.1f)
                     flytocam = false;
                 else

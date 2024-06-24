@@ -1053,6 +1053,10 @@ PrefabInstance:
         you grab it with both controllers and simply move the two controllers away
         from each other.'
       objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
       value: Transformations
@@ -1217,6 +1221,10 @@ PrefabInstance:
         light source. If the ray does not intersect some other object on the way,
         we know that this point of the sphere is lit and we can color the corresponding
         part of the image based on the sphere''s material.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
@@ -1383,6 +1391,10 @@ PrefabInstance:
         If it gets a little awkward, you could
         always try switching hands by opening the user interface on the other controller.'
       objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
       value: User Interface Controls
@@ -1540,6 +1552,10 @@ PrefabInstance:
         This will remove the object from the scene. You are only able to add and
         remove light sources and objects, there is only ever one camera. This is
         the way.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
@@ -1806,6 +1822,10 @@ PrefabInstance:
         <mark=#FF0000>          
         </mark> No Hit'
       objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5496815340918328095, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1970,6 +1990,10 @@ PrefabInstance:
         if you look down and move forward, you will move down towards where you are
         looking and if you move backward, you will move back up again.'
       objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
       value: Movement Controls
@@ -2120,6 +2144,10 @@ PrefabInstance:
       propertyPath: m_text
       value: You can move the camera by turning your head, or by moving the joystick
         on the right controller horizontally.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
@@ -2286,6 +2314,10 @@ PrefabInstance:
         rays, we can get very convincing transparent objects. However, this results
         in even more rays and requires a higher recursion depth.'
       objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
       value: Refraction
@@ -2431,6 +2463,10 @@ PrefabInstance:
     - target: {fileID: 3373495415687728066, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text
@@ -2588,6 +2624,10 @@ PrefabInstance:
 
         When holding an object, its respective
         tab in the control panel will open, allowing you to easily change its parameters.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3957366317052489294, guid: 4492db671b458b745b5c53fefa725067, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5267256765604759227, guid: 4492db671b458b745b5c53fefa725067, type: 3}
       propertyPath: m_text

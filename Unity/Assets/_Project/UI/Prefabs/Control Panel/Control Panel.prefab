@@ -1255,6 +1255,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2592495028248678074}
     m_Modifications:
+    - target: {fileID: -2793561519374800139, guid: 6e42c726c7542bc9e9fff79e3c2b0be8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 560776958427018681, guid: 6e42c726c7542bc9e9fff79e3c2b0be8, type: 3}
       propertyPath: m_Pivot.x
       value: 1
@@ -1342,6 +1346,10 @@ PrefabInstance:
     - target: {fileID: 6197829727864169797, guid: 6e42c726c7542bc9e9fff79e3c2b0be8, type: 3}
       propertyPath: m_Name
       value: Camera Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288208813101995266, guid: 6e42c726c7542bc9e9fff79e3c2b0be8, type: 3}
+      propertyPath: m_text
+      value: Camera
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e42c726c7542bc9e9fff79e3c2b0be8, type: 3}
@@ -1569,6 +1577,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object Button
       objectReference: {fileID: 0}
+    - target: {fileID: 6288208813101995266, guid: 6e42c726c7542bc9e9fff79e3c2b0be8, type: 3}
+      propertyPath: m_text
+      value: Object
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e42c726c7542bc9e9fff79e3c2b0be8, type: 3}
 --- !u!114 &2311804751056248152 stripped
@@ -1681,6 +1693,10 @@ PrefabInstance:
     - target: {fileID: 3641045733115134029, guid: 113385e0ba0854642abfadb26691365c, type: 3}
       propertyPath: m_Name
       value: Ray Tracer Properties
+      objectReference: {fileID: 0}
+    - target: {fileID: 6312213588587520723, guid: 113385e0ba0854642abfadb26691365c, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 113385e0ba0854642abfadb26691365c, type: 3}

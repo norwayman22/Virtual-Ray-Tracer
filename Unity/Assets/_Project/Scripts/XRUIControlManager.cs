@@ -53,14 +53,19 @@ namespace _Project.Scripts
             }
         }
 
-        void ToggleUI()
+        public void ToggleUI(bool toggle)
         {
             CanvasGroup canvasGroup = mainCanvas.gameObject.GetComponent<CanvasGroup>();
-            bool toggle = canvasGroup.alpha == 0;
 
             canvasGroup.interactable = toggle;
             canvasGroup.blocksRaycasts = toggle;
             canvasGroup.alpha = toggle ? 1 : 0;
+        }
+
+        public void ToggleUI()
+        {
+            CanvasGroup canvasGroup = mainCanvas.gameObject.GetComponent<CanvasGroup>();
+            ToggleUI(canvasGroup.alpha == 0);
         }
 
         void onStartActivation(InputAction.CallbackContext context)
@@ -88,7 +93,7 @@ namespace _Project.Scripts
                 rightUIActivated = true;
             }
             mainCanvas.SetLocalPositionAndRotation(canvasDefaultPosition, canvasDefaultRotation);
-            ToggleUI();
+            ToggleUI(true);
         }
 
         void onStopActivation(InputAction.CallbackContext context)
@@ -103,7 +108,7 @@ namespace _Project.Scripts
             {
                 leftUIActivated = false;
                 rightUIActivated = false;
-                ToggleUI();
+                ToggleUI(false);
             }
         }
 

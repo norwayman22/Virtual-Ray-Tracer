@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -13,6 +13,9 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private float transitionTime = 1f;
 
+    [SerializeField]
+    UnityEvent OnSceneLoad;
+
     /// <summary>
     /// Get the current SceneLoader instance.
     /// </summary>
@@ -24,6 +27,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(int index)
     {
+        OnSceneLoad?.Invoke();
         StartCoroutine(LoadSceneInternal(index));
     }
 
