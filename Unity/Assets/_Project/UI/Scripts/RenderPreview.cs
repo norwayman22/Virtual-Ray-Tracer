@@ -1,9 +1,13 @@
 using _Project.Ray_Tracer.Scripts;
 using _Project.Ray_Tracer.Scripts.Utility;
+using _Project.Scripts;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
+using UnityEngine.XR.Interaction.Toolkit.UI;
 
 namespace _Project.UI.Scripts
 {
@@ -44,10 +48,12 @@ namespace _Project.UI.Scripts
 
         private RectTransform windowSize;
         private bool expanded = false;
-        
+
         private float pixelsPerUnit;
         private Vector2Int hoveredPixel;
         private Vector2Int selectedPixel;
+
+        public NearFarInteractor nearFarInteractor { get; set; }
 
         public bool PreviewWindowHovered { get; set; }
         public bool ImageHovered { get; set; }
@@ -66,9 +72,9 @@ namespace _Project.UI.Scripts
             uiImage.sprite = rayTracerImage.GetSprite(pixelsPerUnit);
 
             // Make sure the image UI element is scaled correctly.
-            uiImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 
+            uiImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,
                 rayTracerImage.Width * pixelsPerUnit);
-            uiImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 
+            uiImage.rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,
                 rayTracerImage.Height * pixelsPerUnit);
 
             // The hover and select images are the size of one pixel.
@@ -124,7 +130,7 @@ namespace _Project.UI.Scripts
 
         private void OnDisable()
         {
-            if(expanded)
+            if (expanded)
                 ExpandCollapse();
         }
 
@@ -138,73 +144,99 @@ namespace _Project.UI.Scripts
             rayTracerImage = RTSceneManager.Get().Image;
             rayTracerImage.OnImageChanged += UpdatePreview;
             rayTracerImage.OnImageChanged += CheckDimensionsChanged;
-            
+
             rayManager = RayManager.Get();
 
             windowSize = GetComponent<RectTransform>();
 
             hoverImage.enabled = false;
             selectImage.enabled = false;
+
+            XRUIControlManager xrUIControlManager = transform.root.gameObject.GetComponent<XRUIControlManager>();
+            var leftActivation = XRUIControlManager.GetInputAction(xrUIControlManager.leftActivateReference);
+            if (leftActivation != null)
+                leftActivation.started += _ => toggleHoveredPixel();
+
+            var rightActivation = XRUIControlManager.GetInputAction(xrUIControlManager.rightActivateReference);
+            if (rightActivation != null)
+                rightActivation.started += _ => toggleHoveredPixel();
+
+            UpdatePreview();
+        }
+
+        public void uiHoverEntered(UIHoverEventArgs args)
+        {
+            if (args.uiObject.transform.gameObject.name.Contains("Image"))
+                ImageHovered = true;
+        }
+
+        public void uiHoverExited(UIHoverEventArgs args)
+        {
+            ImageHovered = false;
+            hoverImage.enabled = false;
+        }
+
+        private void toggleHoveredPixel()
+        {
+            if (!ImageHovered)
+                return;
+
+            // If the hovered pixel is already selected we deselect it.
+            if (hoveredPixel == selectedPixel && selectImage.enabled)
+            {
+                selectImage.enabled = false;
+                rayManager.DeselectRay();
+                OnPixelDeselected?.Invoke();
+            }
+            // Select the hovered pixel.
+            else
+            {
+                selectedPixel = hoveredPixel;
+                selectImage.rectTransform.anchoredPosition = hoverImage.rectTransform.anchoredPosition;
+                selectImage.enabled = true;
+                rayManager.SelectRay(selectedPixel);
+                OnPixelSelected?.Invoke();
+            }
         }
 
         private void Update()
         {
-            if (!PreviewWindowHovered && Input.GetMouseButtonDown(0) && expanded) ExpandCollapse();
+            //if (!PreviewWindowHovered && Input.GetMouseButtonDown(0) && expanded) ExpandCollapse();
 
-            if (ImageHovered)
-            {
-                // Get the mouse position with respect to the UI image's transform.
-                Vector2 mouseScreen = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-                Vector2 mouseLocal;
-                RectTransformUtility.ScreenPointToLocalPointInRectangle(uiImage.rectTransform, mouseScreen, null,
-                    out mouseLocal);
-
-                // The UI image is anchored in the center, but we want the coordinates anchored bottom left.
-                mouseLocal.x += uiImage.rectTransform.rect.width / 2.0f;
-                mouseLocal.y += uiImage.rectTransform.rect.height / 2.0f;
-
-                // Determine the pixel that we are hovering over.
-                int xCoordinate = Mathf.FloorToInt(mouseLocal.x / pixelsPerUnit);
-                int yCoordinate = Mathf.FloorToInt(mouseLocal.y / pixelsPerUnit);
-                hoveredPixel = new Vector2Int(xCoordinate, yCoordinate);
-
-                // Snap the mouse position to the pixel center.
-                float pixelCenterX = pixelsPerUnit * xCoordinate + pixelsPerUnit / 2.0f;
-                float pixelCenterY = pixelsPerUnit * yCoordinate + pixelsPerUnit / 2.0f;
-                Vector2 mouseSnapped = new Vector2(pixelCenterX, pixelCenterY);
-
-                // The hover image is anchored in the center, so we convert back.
-                mouseSnapped.x -= uiImage.rectTransform.rect.width / 2.0f;
-                mouseSnapped.y -= uiImage.rectTransform.rect.height / 2.0f;
-                hoverImage.rectTransform.anchoredPosition = mouseSnapped;
-
-                hoverImage.enabled = true;
-
-                // We can click to (de)select the hovered pixel.
-                if (Input.GetMouseButtonDown(0))
-                {
-                    // If the hovered pixel is already selected we deselect it.
-                    if (hoveredPixel == selectedPixel && selectImage.enabled)
-                    {
-                        selectImage.enabled = false;
-                        rayManager.DeselectRay();
-                        OnPixelDeselected?.Invoke();
-                    }
-                    // Select the hovered pixel.
-                    else
-                    {
-                        selectedPixel = hoveredPixel;
-                        selectImage.rectTransform.anchoredPosition = mouseSnapped;
-                        selectImage.enabled = true;
-                        rayManager.SelectRay(selectedPixel);
-                        OnPixelSelected?.Invoke();
-                    }
-                }
-            }
-            else
+            if (!ImageHovered)
             {
                 hoverImage.enabled = false;
+                return;
             }
+            if (nearFarInteractor == null)
+                return;
+
+            if (!nearFarInteractor.TryGetCurrentUIRaycastResult(out RaycastResult hit))
+                return;
+
+            // Get the interactor position with respect to the UI image's transform.
+            Vector3 localHitPos = uiImage.rectTransform.InverseTransformPoint(hit.worldPosition);
+
+            // The UI image is anchored in the center, but we want the coordinates anchored bottom left.
+            localHitPos.x += uiImage.rectTransform.rect.width / 2.0f;
+            localHitPos.y += uiImage.rectTransform.rect.height / 2.0f;
+
+            // Determine the pixel that we are hovering over.
+            int xCoordinate = Mathf.FloorToInt(localHitPos.x / pixelsPerUnit);
+            int yCoordinate = Mathf.FloorToInt(localHitPos.y / pixelsPerUnit);
+            hoveredPixel = new Vector2Int(xCoordinate, yCoordinate);
+
+            // Snap the interactor position to the pixel center.
+            float pixelCenterX = pixelsPerUnit * xCoordinate + pixelsPerUnit / 2.0f;
+            float pixelCenterY = pixelsPerUnit * yCoordinate + pixelsPerUnit / 2.0f;
+            Vector2 interactorSnapped = new Vector2(pixelCenterX, pixelCenterY);
+
+            // The hover image is anchored in the center, so we convert back.
+            interactorSnapped.x -= uiImage.rectTransform.rect.width / 2.0f;
+            interactorSnapped.y -= uiImage.rectTransform.rect.height / 2.0f;
+            hoverImage.rectTransform.anchoredPosition = interactorSnapped;
+
+            hoverImage.enabled = true;
         }
     }
 }

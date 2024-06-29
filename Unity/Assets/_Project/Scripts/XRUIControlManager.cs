@@ -23,9 +23,9 @@ namespace _Project.Scripts
 
         [Space]
         [SerializeField]
-        InputActionReference leftActivateReference;
+        public InputActionReference leftActivateReference;
         [SerializeField]
-        InputActionReference rightActivateReference;
+        public InputActionReference rightActivateReference;
 
         private Vector3 canvasDefaultPosition;
         private Quaternion canvasDefaultRotation;
@@ -112,7 +112,7 @@ namespace _Project.Scripts
             }
         }
 
-        static InputAction GetInputAction(InputActionReference actionReference)
+        public static InputAction GetInputAction(InputActionReference actionReference)
         {
 #pragma warning disable IDE0031 // Use null propagation -- Do not use for UnityEngine.Object types
             return actionReference != null ? actionReference.action : null;
