@@ -57,7 +57,7 @@ MonoBehaviour:
         Press the button to the right of the progress bar to continue to the next
         task.
       skippable: 1
-      points: 95
+      points: 267
     - identifier: 
       name: Introduction
       description: 'As you can see, you have now made a little progress in the current
@@ -68,7 +68,7 @@ MonoBehaviour:
 
 '
       skippable: 1
-      points: 86
+      points: 243
     - identifier: help
       name: Help Menu
       description: We'll first start by going over the controls and the various interface
@@ -76,7 +76,7 @@ MonoBehaviour:
         or find all the necessary information in the help menu. Access this menu
         any time by clicking the "Help" button above.
       skippable: 0
-      points: 153
+      points: 275
     - identifier: controllers
       name: Controllers
       description: Look at the controllers in your hands. If you ever need to look
@@ -85,21 +85,21 @@ MonoBehaviour:
         (your middle finger) and trigger (your index finger) are animated to reflect
         your actions.
       skippable: 1
-      points: 0
+      points: 276
     - identifier: turn
       name: Turning
       description: Turning can be done by moving your head around, but when that
         is not enough, you will want to use the joystick on the right controller
         to turn left or right (and to continue in this tutorial). Try it out.
       skippable: 0
-      points: 169
+      points: 239
     - identifier: move
       name: Moving
       description: Move around by moving the joystick on your left controller. Moving
         forwards will always move towards the direction you are facing. Once you
         get the hang of turning and moving, moving up or down should be doable.
       skippable: 0
-      points: 162
+      points: 256
     - identifier: objectSelect
       name: Grabbing Objects
       description: You can grab the camera, lights and objects in the scene by aiming
@@ -108,7 +108,7 @@ MonoBehaviour:
         move it around just like in real life. Grab the ground, wall or sphere in
         this scene to continue.
       skippable: 0
-      points: 121
+      points: 283
     - identifier: objectDoubleGrab
       name: Grabbing With Both Controllers
       description: When you are holding an object, you can grab it with the other
@@ -116,13 +116,13 @@ MonoBehaviour:
         wall is smaller and the top of it is leaning a little towards you. If you're
         having a hard time, try to think about where to grab it to get the most control.
       skippable: 0
-      points: 150
+      points: 300
     - identifier: editColor
       name: Edit Properties
       description: Whenever you grab an object, its properties are shown in the properties
         panel on the left. Change the color of an object in the properties panel.
       skippable: 0
-      points: 138
+      points: 220
   - optionalTasksStart: 12
     tasks:
     - identifier: 

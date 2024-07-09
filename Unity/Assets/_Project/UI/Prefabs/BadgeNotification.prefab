@@ -163,7 +163,7 @@ RectTransform:
   m_GameObject: {fileID: 6459980650014630416}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5529106954375540616}
@@ -210,7 +210,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  badgePrefab: {fileID: 0}
+  badgePrefab: {fileID: 1680309257455829012}
   animator: {fileID: 981998151248721584}
   showingNotification: 0
 --- !u!95 &981998151248721584
@@ -448,6 +448,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 991c12ac1fa0bbe4a98f00d13ba6166f, type: 3}
+--- !u!114 &1680309257455829012 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4406733974457656456, guid: 991c12ac1fa0bbe4a98f00d13ba6166f, type: 3}
+  m_PrefabInstance: {fileID: 3059762113699718300}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0414a931c832a946b5c3931c050eea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1680309257455829015 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4406733974457656459, guid: 991c12ac1fa0bbe4a98f00d13ba6166f, type: 3}
