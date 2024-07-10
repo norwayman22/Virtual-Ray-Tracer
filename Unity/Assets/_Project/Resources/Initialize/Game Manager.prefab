@@ -47,7 +47,7 @@ MonoBehaviour:
   FPSEnabled: 0
   CheatMode: 0
   TutorialTasks:
-  - optionalTasksStart: 10
+  - optionalTasksStart: 9
     tasks:
     - identifier: 
       name: Introduction
@@ -117,6 +117,11 @@ MonoBehaviour:
         having a hard time, try to think about where to grab it to get the most control.
       skippable: 0
       points: 300
+    - identifier: 
+      name: 
+      description: 
+      skippable: 1
+      points: 0
     - identifier: editColor
       name: Edit Properties
       description: Whenever you grab an object, its properties are shown in the properties
@@ -289,8 +294,9 @@ MonoBehaviour:
       points: 145
     - identifier: renderImage
       name: Render Image
-      description: To see what it should like, click on "Render Image" in the ray
-        tracer properties again. Make sure the "Recursion Depth" is not set to zero.
+      description: To see what it should look like, click on "Render Image" in the
+        ray tracer properties again. Make sure the "Recursion Depth" is not set to
+        zero.
       skippable: 0
       points: 144
     - identifier: selectMirror
@@ -621,7 +627,7 @@ MonoBehaviour:
       name: Spot Light
       description: A spot light is similar to a point light in that light comes from
         a single point, but this time it also has a direction and a "Spot Angle".
-        It works very much like a flashlisht. Select the spot light.
+        It works very much like a flashlight. Select the spot light.
       skippable: 0
       points: 68
     - identifier: spotAngleChange
@@ -784,7 +790,7 @@ MonoBehaviour:
         do some more exploring.
       skippable: 0
       points: 0
-  - optionalTasksStart: 10
+  - optionalTasksStart: 9
     tasks:
     - identifier: 
       name: Axis-Aligned Bounding Box (AABB).
@@ -806,21 +812,9 @@ MonoBehaviour:
         AABB.
       skippable: 1
       points: 410
-    - identifier: scaleAABB
-      name: Scale AABB.
-      description: Now try to scale the object.
-      skippable: 0
-      points: 250
-    - identifier: 
-      name: Scaling explained.
-      description: We can see the previous explained properties in action. When we
-        scale the object the AABB scales with it keeping the minimum and maximum
-        points of the object within its bounds.
-      skippable: 1
-      points: 250
-    - identifier: translateAABB
-      name: Move AABB.
-      description: Now try to move the object around.
+    - identifier: transformAABB
+      name: Move, rotate and scale AABB.
+      description: Now try to move, rotate and scale the object.
       skippable: 0
       points: 250
     - identifier: 
@@ -828,6 +822,13 @@ MonoBehaviour:
       description: Notice that when the object is moved the AAB moves with it. Whenever
         the location of the object is updated the location of the AABB updates as
         well.
+      skippable: 1
+      points: 250
+    - identifier: 
+      name: Scaling explained.
+      description: We can see the previous explained properties in action. When we
+        scale the object the AABB scales with it keeping the minimum and maximum
+        points of the object within its bounds.
       skippable: 1
       points: 250
     - identifier: spinAABB
