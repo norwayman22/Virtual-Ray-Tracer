@@ -47,7 +47,7 @@ MonoBehaviour:
   FPSEnabled: 0
   CheatMode: 0
   TutorialTasks:
-  - optionalTasksStart: 3
+  - optionalTasksStart: 10
     tasks:
     - identifier: 
       name: Introduction
@@ -123,6 +123,11 @@ MonoBehaviour:
         panel on the left. Change the color of an object in the properties panel.
       skippable: 0
       points: 220
+    - identifier: 
+      name: 
+      description: 
+      skippable: 0
+      points: 0
   - optionalTasksStart: 12
     tasks:
     - identifier: 

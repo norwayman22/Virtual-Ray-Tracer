@@ -166,7 +166,7 @@ namespace _Project.UI.Scripts
 
         public void uiHoverEntered(UIHoverEventArgs args)
         {
-            if (args.uiObject.transform.gameObject.name.Contains("Image"))
+            if (args.uiObject.transform.parent.parent.gameObject.name == "Render Preview")
                 ImageHovered = true;
         }
 
