@@ -790,7 +790,7 @@ MonoBehaviour:
         do some more exploring.
       skippable: 0
       points: 0
-  - optionalTasksStart: 4
+  - optionalTasksStart: 3
     tasks:
     - identifier: 
       name: Freedom
@@ -804,13 +804,6 @@ MonoBehaviour:
         the objects in the "Create" dropdown.
       skippable: 0
       points: 538
-    - identifier: deleteObject
-      name: Deleting Objects
-      description: You can now also delete any object, except for the camera. Delete
-        a non-camera object from the scene by selecting it and pressing the delete
-        button.
-      skippable: 0
-      points: 410
     - identifier: 
       name: 
       description: You are now able to create your own custom scenes. Go crazy! If
