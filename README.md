@@ -1,21 +1,12 @@
-<https://user-images.githubusercontent.com/5408480/204060458-41add0ae-2935-4114-af53-04a58dc3e993.mp4>
-
-
-# Virtual Ray Tracer 2.0
+# Virtual Ray Tracer in Virtual Reality
 
 Virtual Ray Tracer is a Unity application that visualizes ray tracing. The application shows a scene with a camera, lights and objects. Rays slowly shoot from the camera and interact with the lights and objects in the scene. Users can change the settings of the ray tracer and material properties of the objects and see how this affects the rays traced in real-time. The application comes with a number of scenes that introduce the user to settings and controls as well as various ray tracing concepts.
 
-## New in 2.0
-
-Virtual Ray Tracer 2.0 comes with several new features. The info panel at the start of each level has been replaced by a task and achievement system. The tasks allow to present the information in smaller chunks and motivate users to explore the levels. The achievements further reward users. Lighting has been expanded: the application now supports area lights, soft shadows, spot lights and distance attenuation. Visualization of axis-aligned bounding boxes and octrees has been added. Besides the new features the application also introduce several settings you can find in the settings panel in each level.
-
-Also new in Virtual ray tracer 2.0 is the possibility to run the application in your [browser](https://wezel.github.io/Virtual-Ray-Tracer) or even on [android devices](https://play.google.com/store/apps/details?id=com.RUG.VirtualRayTracer&hl=en&gl=US&pli=1)(an older version). 
-
-The corresponding theses that let to these features can be found below in the Papers and Theses section.
+This repository is only for the VR version of Virtual Ray Tracer. Other versions can be found in the [main repositry](https://github.com/wezel/Virtual-Ray-Tracer).
 
 ## Building the Application
 
-As a prerequisite, you need a [Unity 2021.3.12f1 LTS](https://unity3d.com/unity/qa/lts-releases) release. To build the application, open the `Unity` folder with Unity, navigate to `File > Build Settings`, select your desired platform and press 'build'. The application has been tested on Windows, Linux, Android and WebGL. For more information on building Unity applications see the [Unity Manual page](https://docs.unity3d.com/Manual/BuildSettings.html).
+As a prerequisite, you need a [Unity 2021.3.12f1 LTS](https://unity3d.com/unity/qa/lts-releases) release. To build the application, open the `Unity` folder with Unity, navigate to `File > Build Settings`, select Windows for PCVR or Android for Standalone VR, then press 'build'. For more information on building Unity applications see the [Unity Manual page](https://docs.unity3d.com/Manual/BuildSettings.html).
 
 ## Implementation
 
