@@ -2,7 +2,11 @@
 
 Virtual Ray Tracer is a Unity application that visualizes ray tracing. The application shows a scene with a camera, lights and objects. Rays slowly shoot from the camera and interact with the lights and objects in the scene. Users can change the settings of the ray tracer and material properties of the objects and see how this affects the rays traced in real-time. The application comes with a number of scenes that introduce the user to settings and controls as well as various ray tracing concepts.
 
-This repository is only for the VR version of Virtual Ray Tracer. Other versions can be found in the [main repositry](https://github.com/wezel/Virtual-Ray-Tracer).
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6aa357aa-e018-4073-8ba3-b37308687f7d" width=600/>
+<p/>
+
+This repository is only for the VR version of Virtual Ray Tracer. Other versions can be found in the [main repository](https://github.com/wezel/Virtual-Ray-Tracer).
 
 ## Building the Application
 
